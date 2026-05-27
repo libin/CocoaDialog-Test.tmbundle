@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+echo "&lt;h2&gt;cocoadialog: icon&lt;/h2&gt;"
+echo '&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog msgbox --title 'With icon' --header 'Heads up' --message 'This dialog uses --icon info.' --icon info --buttons OK Cancel&lt;/code&gt;&lt;/p&gt;'
+echo '&lt;p&gt;SF Symbol / semantic icon rendered to the left of the message.&lt;/p&gt;'
+result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" msgbox --title 'With icon' --header 'Heads up' --message 'This dialog uses --icon info.' --icon info --buttons OK Cancel 2&gt;&amp;1 ) || true
+echo "&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;"
+echo "&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;"
+echo "&lt;pre&gt;"
+printf '%s' "$result" | sed 's/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g'
+echo "&lt;/pre&gt;"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>19 - icon</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>DA5EF0FD-654A-497A-9651-EFF31CC18E67</string>
+</dict>
+</plist>

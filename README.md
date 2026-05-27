@@ -31,6 +31,9 @@ to an HTML output window.
 | 16 | fileselect   | `fileselect` alias                                          |
 | 17 | textbox      | Multi-line editable; ⌘⏎ submits                             |
 | 18 | progressbar  | stdin-driven progress; closes on EOF                        |
+| 19 | icon         | `--icon` SF Symbol / semantic name                          |
+| 20 | markdown     | Inline markdown in `--header` / `--message`                 |
+| 21 | timeout      | `--timeout` auto-close                                      |
 
 ## Requirements
 
