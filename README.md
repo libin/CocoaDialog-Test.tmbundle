@@ -34,6 +34,8 @@ to an HTML output window.
 | 19 | icon         | `--icon` SF Symbol / semantic name                          |
 | 20 | markdown     | Inline markdown in `--header` / `--message`                 |
 | 21 | timeout      | `--timeout` auto-close                                      |
+| 22 | size %       | `--width 60%` / `--height 25%` screen-relative              |
+| 23 | json output  | `--json` structured output                                  |
 
 ## Requirements
 
