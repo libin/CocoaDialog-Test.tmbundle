@@ -7,10 +7,12 @@
 	<key>command</key>
 	<string>#!/usr/bin/env bash
 set -o pipefail
-echo "&lt;h2&gt;cocoadialog: icon&lt;/h2&gt;"
-echo '&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog msgbox --title 'With icon' --header 'Heads up' --message 'This dialog uses --icon info.' --icon info --buttons OK Cancel&lt;/code&gt;&lt;/p&gt;'
-echo '&lt;p&gt;SF Symbol / semantic icon rendered to the left of the message.&lt;/p&gt;'
-result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" msgbox --title 'With icon' --header 'Heads up' --message 'This dialog uses --icon info.' --icon info --buttons OK Cancel 2&gt;&amp;1 ) || true
+cat &lt;&lt;'HTML'
+&lt;h2&gt;cocoadialog: icon&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog 'msgbox' '--title' 'With icon' '--header' 'Heads up' '--message' 'This dialog uses --icon info.' '--icon' 'info' '--buttons' 'OK' 'Cancel'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;SF Symbol / semantic icon rendered to the left of the message.&lt;/p&gt;
+HTML
+result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" 'msgbox' '--title' 'With icon' '--header' 'Heads up' '--message' 'This dialog uses --icon info.' '--icon' 'info' '--buttons' 'OK' 'Cancel' 2&gt;&amp;1 ) || true
 echo "&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;"
 echo "&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;"
 echo "&lt;pre&gt;"
@@ -30,6 +32,6 @@ echo "&lt;/pre&gt;"
 	<key>outputLocation</key>
 	<string>newWindow</string>
 	<key>uuid</key>
-	<string>DA5EF0FD-654A-497A-9651-EFF31CC18E67</string>
+	<string>A82413EA-7741-473D-8171-9BD4F6B0E1B4</string>
 </dict>
 </plist>

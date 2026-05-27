@@ -7,10 +7,12 @@
 	<key>command</key>
 	<string>#!/usr/bin/env bash
 set -o pipefail
-echo "&lt;h2&gt;cocoadialog: timeout&lt;/h2&gt;"
-echo '&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog msgbox --title 'Timeout' --header 'Auto-closing' --message 'This dialog auto-clicks OK after 3 seconds.' --buttons OK Cancel --timeout 3 --timeout-default-button OK&lt;/code&gt;&lt;/p&gt;'
-echo '&lt;p&gt;Auto-closes after 3s clicking the OK button.&lt;/p&gt;'
-result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" msgbox --title 'Timeout' --header 'Auto-closing' --message 'This dialog auto-clicks OK after 3 seconds.' --buttons OK Cancel --timeout 3 --timeout-default-button OK 2&gt;&amp;1 ) || true
+cat &lt;&lt;'HTML'
+&lt;h2&gt;cocoadialog: timeout&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog 'msgbox' '--title' 'Timeout' '--header' 'Auto-closing' '--message' 'This dialog auto-clicks OK after 3 seconds.' '--buttons' 'OK' 'Cancel' '--timeout' '3' '--timeout-default-button' 'OK'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Auto-closes after 3s clicking the OK button.&lt;/p&gt;
+HTML
+result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" 'msgbox' '--title' 'Timeout' '--header' 'Auto-closing' '--message' 'This dialog auto-clicks OK after 3 seconds.' '--buttons' 'OK' 'Cancel' '--timeout' '3' '--timeout-default-button' 'OK' 2&gt;&amp;1 ) || true
 echo "&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;"
 echo "&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;"
 echo "&lt;pre&gt;"
@@ -30,6 +32,6 @@ echo "&lt;/pre&gt;"
 	<key>outputLocation</key>
 	<string>newWindow</string>
 	<key>uuid</key>
-	<string>C7436999-5612-4212-8CB5-9C226ABD4B8D</string>
+	<string>410E3268-5F35-4C2C-B29F-DCF63E5DC616</string>
 </dict>
 </plist>
