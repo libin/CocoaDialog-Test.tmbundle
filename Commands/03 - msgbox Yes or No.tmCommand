@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+echo &quot;&lt;h2&gt;cocoadialog: msgbox&lt;/h2&gt;&quot;
+echo &quot;&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog msgbox --title &amp;#39;Pick one&amp;#39; --text &amp;#39;Yes or No?&amp;#39; --button1 Yes --button2 No --button3 Cancel&lt;/code&gt;&lt;/p&gt;&quot;
+result=$( &quot;$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog&quot; msgbox --title &#39;Pick one&#39; --text &#39;Yes or No?&#39; --button1 Yes --button2 No --button3 Cancel 2&gt;&amp;1 ) || true
+echo &quot;&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;&quot;
+echo &quot;&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;&quot;
+echo &quot;&lt;pre&gt;&quot;
+printf &#39;%s&#39; &quot;$result&quot; | sed &#39;s/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g&#39;
+echo &quot;&lt;/pre&gt;&quot;
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>03 - msgbox Yes/No</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>4B4D1EB9-E21F-4DBC-AA95-780219CDEEFB</string>
+</dict>
+</plist>

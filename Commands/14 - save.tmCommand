@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+echo &quot;&lt;h2&gt;cocoadialog: save&lt;/h2&gt;&quot;
+echo &quot;&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog save --title &amp;#39;Save where?&amp;#39; --with-directory &amp;#39;/tmp&amp;#39; --with-file &amp;#39;untitled.txt&amp;#39;&lt;/code&gt;&lt;/p&gt;&quot;
+result=$( &quot;$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog&quot; save --title &#39;Save where?&#39; --with-directory &#39;/tmp&#39; --with-file &#39;untitled.txt&#39; --button1 OK --button2 Cancel 2&gt;&amp;1 ) || true
+echo &quot;&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;&quot;
+echo &quot;&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;&quot;
+echo &quot;&lt;pre&gt;&quot;
+printf &#39;%s&#39; &quot;$result&quot; | sed &#39;s/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g&#39;
+echo &quot;&lt;/pre&gt;&quot;
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>14 - save</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>598C5D08-1BDC-48DD-92A5-2FC3179D7507</string>
+</dict>
+</plist>

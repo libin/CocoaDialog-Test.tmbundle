@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+echo &quot;&lt;h2&gt;cocoadialog: question&lt;/h2&gt;&quot;
+echo &quot;&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog question --title &amp;#39;Confirm&amp;#39; --text &amp;#39;Continue?&amp;#39;&lt;/code&gt;&lt;/p&gt;&quot;
+result=$( &quot;$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog&quot; question --title &#39;Confirm&#39; --text &#39;Continue?&#39; --button1 OK --button2 Cancel 2&gt;&amp;1 ) || true
+echo &quot;&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;&quot;
+echo &quot;&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;&quot;
+echo &quot;&lt;pre&gt;&quot;
+printf &#39;%s&#39; &quot;$result&quot; | sed &#39;s/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g&#39;
+echo &quot;&lt;/pre&gt;&quot;
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>04 - question alias</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>EE2AA445-0409-449A-8871-874A62CF23E5</string>
+</dict>
+</plist>

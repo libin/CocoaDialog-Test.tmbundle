@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>CocoaDialog Test</string>
+	<key>description</key>
+	<string>Smoke tests for every cocoadialog 3.0 control. Each command pops a dialog and prints the captured result back to an HTML output window.</string>
+	<key>uuid</key>
+	<string>4F1F3A77-2B9C-4B6E-8F32-7E1C9B2D4ABC</string>
+</dict>
+</plist>

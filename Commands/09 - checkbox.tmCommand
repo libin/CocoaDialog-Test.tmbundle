@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+echo &quot;&lt;h2&gt;cocoadialog: checkbox&lt;/h2&gt;&quot;
+echo &quot;&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog checkbox --title &amp;#39;Pick many&amp;#39; --items Red Green Blue --button1 OK --button2 Cancel&lt;/code&gt;&lt;/p&gt;&quot;
+result=$( &quot;$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog&quot; checkbox --title &#39;Pick many&#39; --items Red Green Blue --button1 OK --button2 Cancel 2&gt;&amp;1 ) || true
+echo &quot;&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;&quot;
+echo &quot;&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;&quot;
+echo &quot;&lt;pre&gt;&quot;
+printf &#39;%s&#39; &quot;$result&quot; | sed &#39;s/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g&#39;
+echo &quot;&lt;/pre&gt;&quot;
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>09 - checkbox</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>069830BA-2A8F-4B62-9148-D8677E124728</string>
+</dict>
+</plist>

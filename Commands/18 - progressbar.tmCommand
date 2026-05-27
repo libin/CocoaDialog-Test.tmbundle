@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -e
+echo "&lt;h2&gt;cocoadialog progressbar&lt;/h2&gt;"
+echo "&lt;pre&gt;"
+(
+  for i in 0 25 50 75 100; do
+    echo "$i Progress at $i%"
+    sleep 1
+  done
+) | "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" progressbar --title 'Loading' --percent 0
+echo "&lt;/pre&gt;"
+echo "&lt;p&gt;Done.&lt;/p&gt;"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>18 - progressbar</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>5FFCFD42-C2B6-466C-A0AD-970E78AA3A0A</string>
+</dict>
+</plist>
