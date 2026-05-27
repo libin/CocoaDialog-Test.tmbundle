@@ -36,6 +36,9 @@ to an HTML output window.
 | 21 | timeout      | `--timeout` auto-close                                      |
 | 22 | size %       | `--width 60%` / `--height 25%` screen-relative              |
 | 23 | json output  | `--json` structured output                                  |
+| 24 | radio with-input | Radio + inline single-line freeform input               |
+| 25 | radio multiline  | Radio + inline multi-line text view (⌘⏎ submits)         |
+| 26 | checkbox with-input | Checkboxes + freeform input row                      |
 
 ## Requirements
 

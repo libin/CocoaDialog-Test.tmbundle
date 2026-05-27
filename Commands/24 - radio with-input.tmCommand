@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+cat &lt;&lt;'HTML'
+&lt;h2&gt;cocoadialog: radio with-input&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog 'radio' '--title' 'Inline freeform' '--header' 'Branch name?' '--message' 'Pick or type your own:' '--items' 'main' 'master' 'develop' '--with-input' 'Type something…' '--input-placeholder' 'feature/...' '--buttons' 'OK' 'Cancel'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Radio + inline single-line freeform input. Input disabled until 'Type something' is selected; typing auto-selects it.&lt;/p&gt;
+HTML
+result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" 'radio' '--title' 'Inline freeform' '--header' 'Branch name?' '--message' 'Pick or type your own:' '--items' 'main' 'master' 'develop' '--with-input' 'Type something…' '--input-placeholder' 'feature/...' '--buttons' 'OK' 'Cancel' 2&gt;&amp;1 ) || true
+echo "&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;"
+echo "&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;"
+echo "&lt;pre&gt;"
+printf '%s' "$result" | sed 's/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g'
+echo "&lt;/pre&gt;"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>24 - radio with-input</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>0D01C014-069D-4F20-B159-FC4498723889</string>
+</dict>
+</plist>

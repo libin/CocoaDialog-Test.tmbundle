@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+cat &lt;&lt;'HTML'
+&lt;h2&gt;cocoadialog: checkbox with-input&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog 'checkbox' '--title' 'Multi + freeform' '--header' 'Pick all and add notes' '--message' 'Select any plus an optional comment:' '--items' 'Read' 'Write' 'Execute' '--with-input' 'Notes' '--input-placeholder' 'anything else?' '--buttons' 'OK' 'Cancel'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Checkboxes plus a separate freeform input row. Both checked items and the typed text are returned.&lt;/p&gt;
+HTML
+result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" 'checkbox' '--title' 'Multi + freeform' '--header' 'Pick all and add notes' '--message' 'Select any plus an optional comment:' '--items' 'Read' 'Write' 'Execute' '--with-input' 'Notes' '--input-placeholder' 'anything else?' '--buttons' 'OK' 'Cancel' 2&gt;&amp;1 ) || true
+echo "&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;"
+echo "&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;"
+echo "&lt;pre&gt;"
+printf '%s' "$result" | sed 's/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g'
+echo "&lt;/pre&gt;"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>26 - checkbox with-input</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>EC50C7A5-BE30-4E3B-9678-36979FDB9A52</string>
+</dict>
+</plist>

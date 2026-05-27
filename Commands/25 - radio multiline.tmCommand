@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+cat &lt;&lt;'HTML'
+&lt;h2&gt;cocoadialog: radio multiline&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog 'radio' '--title' 'Inline multiline' '--header' 'What did you change?' '--message' 'Pick a category or write a paragraph:' '--items' 'Bug fix' 'New feature' 'Refactor' '--with-input' 'Other (describe below)' '--with-input-multiline' '--buttons' 'OK' 'Cancel'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Radio + inline multi-line text view (⌘⏎ submits OK).&lt;/p&gt;
+HTML
+result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" 'radio' '--title' 'Inline multiline' '--header' 'What did you change?' '--message' 'Pick a category or write a paragraph:' '--items' 'Bug fix' 'New feature' 'Refactor' '--with-input' 'Other (describe below)' '--with-input-multiline' '--buttons' 'OK' 'Cancel' 2&gt;&amp;1 ) || true
+echo "&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;"
+echo "&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;"
+echo "&lt;pre&gt;"
+printf '%s' "$result" | sed 's/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g'
+echo "&lt;/pre&gt;"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>25 - radio multiline</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>1646E7EC-E927-470C-A55E-1E4D324B98F6</string>
+</dict>
+</plist>
