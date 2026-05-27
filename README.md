@@ -39,6 +39,9 @@ to an HTML output window.
 | 24 | radio with-input | Radio + inline single-line freeform input               |
 | 25 | radio multiline  | Radio + inline multi-line text view (⌘⏎ submits)         |
 | 26 | checkbox with-input | Checkboxes + freeform input row                      |
+| 27 | radio recommended | `--recommended` pre-check + muted `(recommended)` suffix |
+| 28 | auto-width    | Long multi-line shell command — panel grows up to 70% width |
+| 29 | recommended+input | `--recommended` combined with inline `--with-input`     |
 
 ## Requirements
 

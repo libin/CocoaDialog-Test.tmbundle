@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+cat &lt;&lt;'HTML'
+&lt;h2&gt;cocoadialog: radio recommended&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog 'radio' '--title' 'Pick a DB' '--header' 'Pick a DB' '--message' 'Production workload.' '--items' 'PostgreSQL' 'SQLite' 'MySQL' '--recommended' 'PostgreSQL' '--buttons' 'OK' 'Cancel'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Recommended option pre-checked + muted '(recommended)' suffix via attributedTitle.&lt;/p&gt;
+HTML
+result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" 'radio' '--title' 'Pick a DB' '--header' 'Pick a DB' '--message' 'Production workload.' '--items' 'PostgreSQL' 'SQLite' 'MySQL' '--recommended' 'PostgreSQL' '--buttons' 'OK' 'Cancel' 2&gt;&amp;1 ) || true
+echo "&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;"
+echo "&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;"
+echo "&lt;pre&gt;"
+printf '%s' "$result" | sed 's/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g'
+echo "&lt;/pre&gt;"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>27 - radio recommended</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>3C92B407-7F3F-4C9C-A25D-B88A51EEBD3A</string>
+</dict>
+</plist>

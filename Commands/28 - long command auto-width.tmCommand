@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+cat &lt;&lt;'HTML'
+&lt;h2&gt;cocoadialog: auto-width&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog 'msgbox' '--title' 'Confirm' '--header' 'Run this?' '--message' 'cd /Users/libinpan/Work/TextMate/swift-cocoadialog
+  &amp;amp;&amp;amp; swift build -c release
+  &amp;amp;&amp;amp; cp .build/release/cocoadialog /usr/local/bin/cocoadialog
+  &amp;amp;&amp;amp; echo done' '--buttons' 'Allow' 'Block'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Long multi-line shell command — panel auto-grows up to 70% screen width.&lt;/p&gt;
+HTML
+result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" 'msgbox' '--title' 'Confirm' '--header' 'Run this?' '--message' 'cd /Users/libinpan/Work/TextMate/swift-cocoadialog
+  &amp;&amp; swift build -c release
+  &amp;&amp; cp .build/release/cocoadialog /usr/local/bin/cocoadialog
+  &amp;&amp; echo done' '--buttons' 'Allow' 'Block' 2&gt;&amp;1 ) || true
+echo "&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;"
+echo "&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;"
+echo "&lt;pre&gt;"
+printf '%s' "$result" | sed 's/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g'
+echo "&lt;/pre&gt;"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>28 - long command auto-width</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>6002D0AD-6DF3-4CB3-B374-3438457C8204</string>
+</dict>
+</plist>
