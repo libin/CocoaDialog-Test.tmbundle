@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env bash
+set -o pipefail
+cat &lt;&lt;'HTML'
+&lt;h2&gt;cocoadialog: size %&lt;/h2&gt;
+&lt;p&gt;&lt;b&gt;Command:&lt;/b&gt; &lt;code&gt;cocoadialog 'msgbox' '--title' 'Sized' '--header' '60% × 25%' '--message' 'Width and height can be percentages of the screen.' '--buttons' 'OK' '--width' '60%' '--height' '25%'&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Width / height accept N% to size relative to the main screen.&lt;/p&gt;
+HTML
+result=$( "$TM_SUPPORT_PATH/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog" 'msgbox' '--title' 'Sized' '--header' '60% × 25%' '--message' 'Width and height can be percentages of the screen.' '--buttons' 'OK' '--width' '60%' '--height' '25%' 2&gt;&amp;1 ) || true
+echo "&lt;p&gt;&lt;b&gt;Exit:&lt;/b&gt; $?&lt;/p&gt;"
+echo "&lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;"
+echo "&lt;pre&gt;"
+printf '%s' "$result" | sed 's/&amp;/\&amp;amp;/g; s/&lt;/\&amp;lt;/g; s/&gt;/\&amp;gt;/g'
+echo "&lt;/pre&gt;"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>22 - size %</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>1B3FC027-CC35-4559-90EF-7F9564C15503</string>
+</dict>
+</plist>
